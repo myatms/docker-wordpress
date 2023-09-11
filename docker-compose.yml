@@ -12,7 +12,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.myresolver.acme.email=myathminsoe@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.email=example@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "443:443"
@@ -27,7 +27,7 @@ services:
     container_name: "wp"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wp.rule=Host(`wp.opshub.online`)"
+      - "traefik.http.routers.wp.rule=Host(`wp.example.com`)"
       - "traefik.http.routers.wp.entrypoints=websecure"
       - "traefik.http.routers.wp.tls.certresolver=myresolver"
     
@@ -73,7 +73,7 @@ services:
       #      - ${IP}:9000:80
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pma.rule=Host(`pma.opshub.online`)"
+      - "traefik.http.routers.pma.rule=Host(`pma.example.com`)"
       - "traefik.http.routers.pma.entrypoints=websecure"
       - "traefik.http.routers.pma.tls.certresolver=myresolver"
     links:
